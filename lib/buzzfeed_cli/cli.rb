@@ -25,7 +25,7 @@ class BuzzfeedCli::CLI
 
   def display_story(input)
     if input.to_i > BuzzfeedCli::Story.all.length
-      instructions # have to get input in a better way
+      instructions 
     else
       story = BuzzfeedCli::Story.all[input.to_i]
       puts "#{story.title} - #{story.description} - #{story.author} - #{story.published}"
@@ -45,6 +45,8 @@ class BuzzfeedCli::CLI
       instructions
     end
   end
+
+
 
 
 end
