@@ -6,9 +6,8 @@ class BuzzfeedCli::CLI
   end
 
   def list_stories
-    #NEED TO FIX INDEX
     BuzzfeedCli::Story.all.each_with_index do | story, i |
-      puts "#{i} - #{story.title}"
+      puts "#{i + 1} - #{story.title}"
     end
     instructions
   end
@@ -25,7 +24,7 @@ class BuzzfeedCli::CLI
 
   def display_story(input)
     if input.to_i > BuzzfeedCli::Story.all.length
-      instructions 
+      instructions
     else
       story = BuzzfeedCli::Story.all[input.to_i]
       puts "#{story.title} - #{story.description} - #{story.author} - #{story.published}"

@@ -1,7 +1,6 @@
 class BuzzfeedCli::Story
   attr_accessor :title, :description, :author, :published
   @@all = []
-  binding.pry
 
   def self.all
     @@all
