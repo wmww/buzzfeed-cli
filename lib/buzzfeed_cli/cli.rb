@@ -13,7 +13,7 @@ class BuzzfeedCli::CLI
   end
 
   def instructions
-    puts "What story would you like to see?"
+    puts "Enter the number for a story you'd like to see or random for a random story"
     input = gets.chomp
     if input.to_i == 0
       handle_strings(input)
@@ -29,14 +29,25 @@ class BuzzfeedCli::CLI
       story = BuzzfeedCli::Story.all[input.to_i]
       puts "#{story.title} - #{story.description} - #{story.author} - #{story.published}"
       puts "----------------------------------"
-      instructions
+      puts "Would you like to open this article?"
+
+      input = gets.chomp
+        if input = "yes".downcase
+          story.open_story
+        else
+          instructions
+        end
     end
   end
-
 
   def handle_strings(input)
     if input == "list"
       list_stories
+    elsif input == "random"
+      story = BuzzfeedCli::Story.all[rand(BuzzfeedCli::Story.all.length)]
+      puts "#{story.title} - #{story.description} - #{story.author} - #{story.published}"
+      puts "----------------------------------"
+      instructions
     elsif input == "exit"
       puts "See you next time!"
     else input.to_i == 0
@@ -44,8 +55,5 @@ class BuzzfeedCli::CLI
       instructions
     end
   end
-
-
-
 
 end
