@@ -10,9 +10,6 @@ class BuzzfeedCli::Story
     @@all << self
   end
 
-  def random_article
-  end
-
   def open_story
     system("open 'http://www.buzzfeed.com#{url}'")
   end
