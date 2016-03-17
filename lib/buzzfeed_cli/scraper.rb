@@ -1,11 +1,4 @@
 class BuzzfeedCli::Scraper
-  def initialize(url = nil)
-    @url = url
-  end
-
-  def scrape_story
-    @doc = Nokogiri::HTML(open(@url))
-  end
 
   def scrape_stories
     @doc = Nokogiri::HTML(open("http://www.buzzfeed.com/"))
